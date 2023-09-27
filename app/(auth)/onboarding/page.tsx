@@ -2,19 +2,25 @@ import AccountProfile from "@/components/forms/AccountProfile";
 import { currentUser } from "@clerk/nextjs";
 import React, { use } from "react";
 
-const page = async() => {
-  const user = await currentUser()
+const page = async () => {
+  const user = await currentUser();
 
-  const userInfo = {}
+  const userInfo = {
+    id: "",
+    username: "",
+    name: "",
+    bio: "",
+    image: "",
+  };
 
   const userData = {
-    id: user?.id
+    id: user?.id,
     objectId: userInfo?.id,
-    username: userInfo?.username || user?.username
+    username: userInfo?.username || user?.username,
     name: userInfo?.name || user?.firstName || "",
     bio: userInfo?.bio || "",
-    image: userInfo?.image || user?.imageUrl
-  }
+    image: userInfo?.image || user?.imageUrl,
+  };
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
